@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: GPL-2.0
+
+#include "rk3399-u-boot.dtsi"
+
+/ {
+	chosen {
+		stdout-path = "serial2:115200n8";
+		u-boot,spl-boot-order = "same-as-spl", &sdmmc;
+	};
+	config {
+		sysreset-gpio = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&gpio1  {
+	u-boot,dm-pre-reloc;
+};

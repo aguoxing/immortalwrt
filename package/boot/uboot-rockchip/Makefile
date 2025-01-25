@@ -117,6 +117,14 @@ define U-Boot/rk3399/Default
   ATF:=$(RK3399_ATF)
 endef
 
+define U-Boot/emb3531-rk3399
+  $(U-Boot/rk3399/Default)
+  NAME:=EMB 3531
+  BUILD_DEVICES:= \
+    norco_emb-3531
+endef
+
+
 define U-Boot/fine3399-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=Fine 3399
@@ -393,6 +401,7 @@ endef
 
 UBOOT_TARGETS := \
   fine3399-rk3399 \
+  emb3531-rk3399 \
   guangmiao-g4c-rk3399 \
   nanopc-t4-rk3399 \
   nanopi-r4s-rk3399 \
