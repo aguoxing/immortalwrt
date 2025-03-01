@@ -323,6 +323,12 @@ define U-Boot/sige3-rk3568
     armsom_sige3
 endef
 
+define U-Boot/xgp-v3-rk3568
+  $(U-Boot/rk3568/Default)
+  NAME:=XGP V3
+  BUILD_DEVICES:= \
+    nlnet_xgp-v3
+endef
 
 # RK3588 boards
 
@@ -435,6 +441,7 @@ UBOOT_TARGETS := \
   rock-3a-rk3568 \
   rock-3b-rk3568 \
   sige3-rk3568 \
+  xgp-v3-rk3568 \
   cyber3588-aib-rk3588 \
   nanopc-t6-rk3588 \
   orangepi-5-plus-rk3588 \
