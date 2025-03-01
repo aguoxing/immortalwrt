@@ -169,7 +169,7 @@ define Device/friendlyarm_nanopi-r4s
   DEVICE_MODEL := NanoPi R4S
   SOC := rk3399
   BOOT_FLOW := pine64-bin
-  DEVICE_PACKAGES := kmod-r8168
+  DEVICE_PACKAGES := kmod-r8169
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r4s
 
@@ -178,7 +178,7 @@ define Device/friendlyarm_nanopi-r4se
   DEVICE_MODEL := NanoPi R4SE
   SOC := rk3399
   BOOT_FLOW := pine64-bin
-  DEVICE_PACKAGES := kmod-r8168
+  DEVICE_PACKAGES := kmod-r8169
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r4se
 
@@ -188,7 +188,7 @@ define Device/friendlyarm_nanopi-r4s-enterprise
   SOC := rk3399
   UBOOT_DEVICE_NAME := nanopi-r4s-rk3399
   BOOT_FLOW := pine64-bin
-  DEVICE_PACKAGES := kmod-r8168
+  DEVICE_PACKAGES := kmod-r8169
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r4s-enterprise
 
