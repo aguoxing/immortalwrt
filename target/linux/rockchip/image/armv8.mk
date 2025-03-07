@@ -214,10 +214,8 @@ define Device/nlnet_xgp-v3
   DEVICE_VENDOR := NLnet
   DEVICE_MODEL := XGP V3
   SOC := rk3568
-  UBOOT_DEVICE_NAME := xgp-v3-rk3568
   BOOT_FLOW := pine64-img
   DEVICE_PACKAGES := kmod-hwmon-pwmfan kmod-mt7921e wpad-openssl
-  DEVICE_DTS = rockchip/rk3568-xgp rockchip/rk3568-xgp-v3
 endef
 TARGET_DEVICES += nlnet_xgp-v3
 
