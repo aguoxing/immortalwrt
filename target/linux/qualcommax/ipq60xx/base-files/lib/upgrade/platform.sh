@@ -115,6 +115,7 @@ platform_do_upgrade() {
 	netgear,wax214|\
 	netgear,wax610|\
 	netgear,wax610y|\
+	wf,hr6001|\
 	qihoo,360v6)
 		nand_do_upgrade "$1"
 		;;
@@ -133,7 +134,6 @@ platform_do_upgrade() {
 		fw_setenv auto_recovery yes
 		nand_do_upgrade "$1"
 		;;
-	wf,hr6001|\
 	tplink,eap610-outdoor|\
 	tplink,eap623od-hd-v1)
 		tplink_do_upgrade "$1"
