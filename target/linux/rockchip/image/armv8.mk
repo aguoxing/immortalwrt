@@ -160,7 +160,7 @@ define Device/friendlyarm_nanopi-r3s
   DEVICE_MODEL := NanoPi R3S
   SOC := rk3566
   BOOT_FLOW := pine64-img
-  DEVICE_PACKAGES := kmod-r8168
+  DEVICE_PACKAGES := kmod-r8169
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r3s
 
@@ -233,7 +233,7 @@ define Device/huake_guangmiao-g4c
   DEVICE_MODEL := GuangMiao G4C
   SOC := rk3399
   BOOT_FLOW := pine64-bin
-  DEVICE_PACKAGES := kmod-r8168
+  DEVICE_PACKAGES := kmod-r8169
 endef
 TARGET_DEVICES += huake_guangmiao-g4c
 
@@ -343,6 +343,22 @@ define Device/radxa_rock-3c
   DEVICE_PACKAGES := kmod-usb-net-cdc-ncm kmod-usb-net-rndis
 endef
 TARGET_DEVICES += radxa_rock-3c
+
+define Device/radxa_rock-4c-plus
+  DEVICE_VENDOR := Radxa
+  DEVICE_MODEL := ROCK 4C+
+  SOC := rk3399
+  BOOT_FLOW := pine64-bin
+endef
+TARGET_DEVICES += radxa_rock-4c-plus
+
+define Device/radxa_rock-4se
+  DEVICE_VENDOR := Radxa
+  DEVICE_MODEL := ROCK 4SE
+  SOC := rk3399
+  BOOT_FLOW := pine64-bin
+endef
+TARGET_DEVICES += radxa_rock-4se
 
 define Device/radxa_rock-5a
   DEVICE_VENDOR := Radxa
