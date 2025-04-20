@@ -12,3 +12,4 @@ src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main
 src-link adguardhome ./package/custom/luci-app-adguardhome
 #src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome.git;master
 
+
