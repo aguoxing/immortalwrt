@@ -26,7 +26,7 @@
 
 	chosen {
 		stdout-path = "serial0:115200n8";
-		bootargs-append = " root=/dev/ubiblock0_1 pcie_aspm=off";
+		bootargs-append = " root=/dev/ubiblock0_1";
 	};
 
 	modem {
@@ -35,8 +35,8 @@
 		pinctrl-0 = <&modem_pins>;
 
 		/* output low = download mode */
-		modem_forcedl {
-			gpio-export,name = "modem_forcedl";
+		modem-edl {
+			gpio-export,name = "modem_edl";
 			gpio-export,output = <1>;
 			gpios = <&tlmm 46 GPIO_ACTIVE_HIGH>;
 		};
@@ -48,10 +48,7 @@
 			gpios = <&tlmm 30 GPIO_ACTIVE_HIGH>;
 		};
 
-		/*
-		 * output low 1s pulse = reset
-		 * sometimes crashes kernel if mhi_pci_generic is active
-		 */
+		/* output low 5s pulse = reset */
 		modem-reset {
 			gpio-export,name = "modem_reset";
 			gpio-export,output = <1>;
@@ -94,62 +91,56 @@
 		pinctrl-0 = <&led_pins>;
 
 		4g_green {
-			label = "green:4g";
 			color = <LED_COLOR_ID_GREEN>;
+			function = "4g";
 			gpios = <&aw9523 0 GPIO_ACTIVE_LOW>;
 		};
 
 		4g_blue {
-			label = "blue:4g";
 			color = <LED_COLOR_ID_BLUE>;
+			function = "4g";
 			gpios = <&aw9523 1 GPIO_ACTIVE_LOW>;
 		};
 
-		wifi_red {
-			label = "red:wifi";
-			color = <LED_COLOR_ID_RED>;
-			gpios = <&aw9523 2 GPIO_ACTIVE_LOW>;
-		};
-
 		wifi_blue {
-			label = "blue:wifi";
 			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_WLAN;
 			gpios = <&aw9523 3 GPIO_ACTIVE_LOW>;
 		};
 
 		led_power_blue: power_blue {
-			label = "blue:power";
 			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_POWER;
 			gpios = <&aw9523 5 GPIO_ACTIVE_LOW>;
 		};
 
 		led_power_red: power_red {
-			label = "red:power";
 			color = <LED_COLOR_ID_RED>;
+			function = LED_FUNCTION_POWER;
 			gpios = <&aw9523 6 GPIO_ACTIVE_LOW>;
 		};
 
 		5g_red {
-			label = "red:5g";
 			color = <LED_COLOR_ID_RED>;
+			function = "5g";
 			gpios = <&aw9523 8 GPIO_ACTIVE_LOW>;
 		};
 
 		5g_green {
-			label = "green:5g";
 			color = <LED_COLOR_ID_GREEN>;
+			function = "5g";
 			gpios = <&aw9523 9 GPIO_ACTIVE_LOW>;
 		};
 
 		5g_blue {
-			label = "blue:5g";
 			color = <LED_COLOR_ID_BLUE>;
+			function = "5g";
 			gpios = <&aw9523 10 GPIO_ACTIVE_LOW>;
 		};
 
 		4g_red {
-			label = "red:4g";
 			color = <LED_COLOR_ID_RED>;
+			function = "4g";
 			gpios = <&aw9523 11 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -173,26 +164,10 @@
 	};
 
 	button_pins: button-pins {
-		power_button {
-			bias-pull-up;
-			drive-strength = <8>;
-			function = "gpio";
-			pins = "gpio62";
-		};
-
-		reset_button {
-			bias-pull-up;
-			drive-strength = <8>;
-			function = "gpio";
-			pins = "gpio47";
-		};
-
-		wps_button {
-			bias-pull-up;
-			drive-strength = <8>;
-			function = "gpio";
-			pins = "gpio64";
-		};
+		bias-pull-up;
+		drive-strength = <8>;
+		function = "gpio";
+		pins = "gpio47", "gpio62", "gpio64";
 	};
 
 	hsuart_pins: hsuart-state {
@@ -213,7 +188,7 @@
 			pins = "gpio29";
 		};
 
-		modem_forcedl {
+		modem_edl {
 			output-high;
 			pins = "gpio46";
 		};
@@ -240,7 +215,7 @@
 
 		led_pins: led-pins {
 			pins =
-				"gpio0", "gpio1", "gpio2", "gpio3", "gpio5", "gpio6",
+				"gpio0", "gpio1", "gpio3", "gpio5", "gpio6",
 				"gpio8", "gpio9", "gpio10", "gpio11";
 			function = "gpio";
 			input-disable;
@@ -371,7 +346,7 @@
 	switch_lan_bmp = <ESS_PORT4>;
 	switch_wan_bmp = <ESS_PORT6>;
 	switch_mac_mode = <MAC_MODE_PSGMII>;
-	switch_mac_mode2 = <MAC_MODE_SGMII_CHANNEL0>;
+	switch_mac_mode2 = <MAC_MODE_SGMII_PLUS>;
 
 	qcom,port_phyinfo {
 			port@4 {
